@@ -1,0 +1,59 @@
+---
+- hosts: jenkins
+  tasks:
+   - name: Check for Python
+     raw: test -e /usr/bin/python
+     changed_when: false
+     failed_when: false
+     register: check_python
+
+   - name: Install Python
+     raw: apt -y update && apt install -y python3-pip
+     when: check_python.rc != 0
+
+
+   - name: Install lxml
+     raw: pip3 install lxml
+
+   - name: Task name
+     stat:
+          path: /tmp/artifacts
+     register: my_folder
+
+   - name: Create a new file with permissions
+     file:
+          path: /tmp/artifacts
+          state: directory
+          mode: 0755
+     when: my_folder.stat.exists == false
+
+   - maven_artifact:
+          group_id: org.springframework
+          artifact_id: jb-hello-world-maven
+          version: latest
+          repository_url: 'http://52.66.82.175:8081/repository/minutus-release/'
+          username: admin
+          password: minutus
+          dest: /tmp/artifacts
+     register: artifact_path
+    
+   - name: Install firewalld
+     apt:
+          name: firewalld
+          state: latest
+  
+   - name: start firewalld
+     service:
+          name: firewalld
+          state: started
+          enabled: yes
+
+   - name: enable 8089 port
+     firewalld:
+          zone: public
+          port: 8089/tcp
+          permanent: true
+          state: enabled
+          immediate: true
+   - name: deploy to server
+     shell: nohup  java -jar /tmp/artifacts/ --server.port=8089 </dev/null >/dev/null 2>&1 &
