@@ -28,10 +28,10 @@
      when: my_folder.stat.exists == false
 
    - maven_artifact:
-          group_id: org.springframework
-          artifact_id: jb-hello-world-maven
+          group_id: com.crm
+          artifact_id: WS-neelam
           version: latest
-          repository_url: 'http://52.66.82.175:8081/repository/minutus-release/'
+          repository_url: 'http://52.66.82.175:8081/repository/minutus-snapshots/'
           username: admin
           password: minutus
           dest: /tmp/artifacts
