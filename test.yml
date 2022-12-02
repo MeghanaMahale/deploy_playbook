@@ -36,12 +36,12 @@
           password: minutus
           dest: /tmp/artifacts
      register: artifact_path
-    
+
    - name: Install firewalld
      apt:
           name: firewalld
           state: latest
-  
+
    - name: start firewalld
      service:
           name: firewalld
@@ -56,4 +56,4 @@
           state: enabled
           immediate: true
    - name: deploy to server
-     shell: nohup  java -jar /tmp/artifacts/ --server.port=8089 </dev/null >/dev/null 2>&1 &
+     shell: nohup  java -jar WS-neelam.dest --server.port=8089 </dev/null >/dev/null 2>&1 &
