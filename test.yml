@@ -29,7 +29,7 @@
 
    - maven_artifact:
           group_id: com.crm
-          artifact_id: "{{ artifactId }}"
+          artifact_id: "{{ artifact_id }}"
           version: latest
           repository_url: 'http://52.66.82.175:8081/repository/minutus-snapshots/'
           username: admin
