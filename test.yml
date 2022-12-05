@@ -29,7 +29,7 @@
 
    - maven_artifact:
           group_id: com.crm
-          artifact_id: WS-neelam
+          artifact_id: "{{ artifact_id }}"
           version: latest
           repository_url: 'http://52.66.82.175:8081/repository/minutus-snapshots/'
           username: admin
@@ -56,4 +56,4 @@
           state: enabled
           immediate: true
    - name: deploy to server
-     shell: nohup  java -jar WS-neelam.dest --server.port=8089 </dev/null >/dev/null 2>&1 &
+     shell: nohup java -jar artifact_path.dest --server.port=8082 </dev/null >/dev/null 2>&1 &
