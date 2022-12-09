@@ -56,4 +56,4 @@
           state: enabled
           immediate: true
    - name: deploy to server
-     shell: nohup java -jar artifact_path.dest --server.port=8082 </dev/null >/dev/null 2>&1 &
+     shell: nohup java -jar artifact_path.dest --server.port=8089 </dev/null >/dev/null 2>&1 &
