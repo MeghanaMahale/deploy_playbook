@@ -31,7 +31,7 @@
           group_id: crm
           artifact_id: "{{ artifact_id }}"
           version: latest
-          repository_url: 'http://52.66.82.175:8081/repository/minutus-snapshots/'
+          repository_url: 'http://3.238.253.66:8081/repository/minutus-snapshot/'
           username: admin
           password: minutus
           dest: /tmp/artifacts
