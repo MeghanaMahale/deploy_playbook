@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'ansible'
-    }
-
-  }
+  agent any
   stages {
     stage('Check for files in workspace') {
       agent {
