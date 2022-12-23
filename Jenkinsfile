@@ -14,6 +14,12 @@ pipeline {
     }
 
     stage('Check for Python') {
+      agent {
+        node {
+          label 'ansible'
+        }
+
+      }
       steps {
         readFile 'install_Apache.yml'
       }
