@@ -21,7 +21,7 @@ pipeline {
 
       }
       steps {
-        readFile 'install_Apache.yml'
+        readFile 'test.yml'
       }
     }
 
